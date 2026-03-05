@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salon Bella Bridals — Ganemulla</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0d0d0d;
+      --dark: #1a1a1a;
+      --darkgray: #232323;
+      --white: #ffffff;
+      --offwhite: #f7f4ef;
+      --gold: #b8965a;
+      --gold-light: #d4ad72;
+      --gold-pale: #ecdcc0;
+      --gray: #888;
+      --light-gray: #e8e4de;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--black); font-family: 'Nunito', sans-serif; font-weight: 400; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; padding: 0 3rem; height: 72px;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid rgba(184,150,90,0.15);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; flex-shrink: 0; }
+    .nav-logo-icon { width: 38px; height: 38px; background: var(--black); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .nav-logo-icon svg { width: 20px; height: 20px; fill: var(--gold); }
+    .nav-logo-text { font-family: 'Great Vibes', cursive; font-size: 1.6rem; color: var(--black); letter-spacing: 0.04em; }
+    .nav-links { display: flex; list-style: none; margin: 0 auto; }
+    .nav-links li a {
+      display: block; padding: 0 1.3rem; line-height: 72px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--black); text-decoration: none;
+      border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links li a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    .nav-book {
+      margin-left: auto; display: inline-block; padding: 0.6rem 1.8rem;
+      font-size: 0.71rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--black); text-decoration: none; border: 2px solid var(--black);
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .nav-book:hover { background: var(--gold); border-color: var(--gold); color: var(--white); }
+
+    /* HERO */
+    #hero { margin-top: 72px; display: flex; min-height: calc(100vh - 72px); }
+    .hero-img {
+      flex: 0 0 55%; position: relative; overflow: hidden;
+      background: linear-gradient(155deg, #dac9b2 0%, #b89070 40%, #9a7255 100%);
+    }
+    .hero-img-inner { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }
+    .hero-img-inner svg { opacity: 0.2; }
+    .hero-img-inner span { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.95rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .hero-text {
+      flex: 0 0 45%; background: var(--offwhite);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 4rem 5rem 5rem;
+    }
+    .hero-tag {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
+    }
+    .hero-tag span { color: var(--gray); margin: 0 0.4rem; }
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 4.2vw, 5rem); font-weight: 600;
+      line-height: 1.08; font-style: italic; color: var(--black);
+      margin-bottom: 1.4rem;
+      opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+    }
+    .hero-p {
+      font-size: 0.88rem; line-height: 1.85; color: var(--gray);
+      max-width: 340px; margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+    }
+    .hero-btns { display: flex; align-items: center; gap: 1.8rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s 0.7s forwards; }
+    .btn-gold { display: inline-block; padding: 0.85rem 2.2rem; background: var(--gold); color: var(--white); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--gold); transition: background 0.25s, color 0.25s; }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
+    .hero-call { font-size: 0.8rem; font-weight: 600; color: var(--black); text-decoration: none; transition: color 0.2s; }
+    .hero-call:hover { color: var(--gold); }
+    .hero-call small { font-weight: 400; color: var(--gray); font-size: 0.68rem; display: block; margin-bottom: 1px; letter-spacing: 0.08em; }
+    .hero-stars { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--light-gray); display: flex; align-items: center; gap: 1rem; opacity: 0; animation: fadeUp 0.7s 0.85s forwards; }
+    .stars-g { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.08em; }
+    .hero-stars p { font-size: 0.78rem; color: var(--gray); line-height: 1.5; }
+    .hero-stars strong { font-size: 1rem; color: var(--black); }
+
+    /* MARQUEE */
+    .marquee-bar { background: var(--gold); padding: 0.85rem 0; overflow: hidden; }
+    .marquee-track { display: flex; gap: 3rem; white-space: nowrap; animation: marquee 22s linear infinite; }
+    .marquee-item { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--white); flex-shrink: 0; }
+    .marquee-sep { color: rgba(255,255,255,0.4); }
+
+    /* CHANGE */
+    #change { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
+    .change-img { background: linear-gradient(150deg, #e0cfbc, #c4a882); position: relative; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 2.5rem; }
+    .change-img span { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.92rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+    .change-text { background: var(--white); display: flex; flex-direction: column; justify-content: center; padding: 5rem 5rem 5rem 5.5rem; }
+    .gold-bar { display: block; width: 48px; height: 3px; background: var(--gold); margin-bottom: 1.6rem; }
+    .change-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 2.8vw, 3rem); font-weight: 600; font-style: italic; margin-bottom: 1.5rem; line-height: 1.15; }
+    .change-text p { font-size: 0.92rem; line-height: 1.9; color: var(--gray); margin-bottom: 2.2rem; max-width: 420px; }
+
+    /* SERVICES */
+    #services { background: var(--black); padding: 5.5rem 4rem; }
+    .svc-header { text-align: center; margin-bottom: 3.5rem; }
+    .eyebrow { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
+    .svc-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 3.2vw, 3.2rem); font-weight: 600; font-style: italic; color: var(--white); }
+    .svc-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .svc-card { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 3/4; }
+    .svc-bg { width: 100%; height: 100%; transition: transform 0.5s ease; }
+    .svc-card:hover .svc-bg { transform: scale(1.08); }
+    .svc-card:nth-child(1) .svc-bg { background: linear-gradient(160deg, #3a2e24, #6b4e35); }
+    .svc-card:nth-child(2) .svc-bg { background: linear-gradient(160deg, #2a3040, #4a5568); }
+    .svc-card:nth-child(3) .svc-bg { background: linear-gradient(160deg, #2e2a38, #5a4a65); }
+    .svc-card:nth-child(4) .svc-bg { background: linear-gradient(160deg, #382028, #7a3a4a); }
+    .svc-card:nth-child(5) .svc-bg { background: linear-gradient(160deg, #2a3028, #4a6048); }
+    .svc-card:nth-child(6) .svc-bg { background: linear-gradient(160deg, #302820, #604030); }
+    .svc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%); }
+    .svc-lbl { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.4rem 1rem 1.1rem; }
+    .svc-lbl span { display: block; width: 22px; height: 2px; background: var(--gold); margin-bottom: 0.6rem; }
+    .svc-lbl p { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); line-height: 1.3; }
+    .svc-footer { text-align: center; margin-top: 3rem; }
+    .btn-outline-gold { display: inline-block; padding: 0.85rem 2.5rem; background: transparent; color: var(--gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--gold); transition: background 0.25s, color 0.25s; }
+    .btn-outline-gold:hover { background: var(--gold); color: var(--white); }
+
+    /* WELCOME */
+    #welcome { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; background: var(--offwhite); }
+    .welcome-img { background: linear-gradient(135deg, #d4c4ae, #b09878); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .welcome-img span { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.92rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); white-space: nowrap; }
+    .welcome-text { display: flex; flex-direction: column; justify-content: center; padding: 5rem 5.5rem 5rem 5rem; }
+    .welcome-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 2.5vw, 2.8rem); font-weight: 600; font-style: italic; margin-bottom: 1.2rem; line-height: 1.15; }
+    .squiggle { width: 80px; height: 14px; margin-bottom: 1.5rem; }
+    .welcome-text p { font-size: 0.88rem; line-height: 1.9; color: var(--gray); max-width: 420px; }
+    .welcome-text p a { color: var(--gold); text-decoration: none; font-weight: 600; }
+
+    /* READY */
+    #ready {
+      background: var(--dark);
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b8965a' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+      padding: 7rem 4rem; text-align: center;
+    }
+    #ready h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 3.5vw, 3.8rem); font-weight: 600; font-style: italic; color: var(--white); margin-bottom: 1.8rem; line-height: 1.15; }
+    #ready p { font-size: 0.9rem; line-height: 1.9; color: rgba(255,255,255,0.55); max-width: 580px; margin: 0 auto 3rem; }
+
+    /* REVIEWS */
+    #reviews { background: var(--black); padding: 5.5rem 4rem; }
+    .rev-header { text-align: center; margin-bottom: 3rem; }
+    .rev-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 2.8vw, 2.8rem); font-weight: 600; font-style: italic; color: var(--white); }
+    .g-badge { display: inline-flex; align-items: center; gap: 1rem; background: var(--darkgray); padding: 1rem 2rem; margin-bottom: 3rem; border: 1px solid rgba(184,150,90,0.2); }
+    .g-badge .g-icon { width: 36px; height: 36px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1rem; color: #4285f4; }
+    .g-badge .g-info p { font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+    .g-badge .g-info strong { font-size: 0.82rem; color: var(--white); }
+    .g-badge .g-stars { color: var(--gold); font-size: 0.85rem; }
+    .rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .rev-card { background: var(--darkgray); padding: 1.8rem; border: 1px solid rgba(255,255,255,0.06); transition: border-color 0.3s; }
+    .rev-card:hover { border-color: rgba(184,150,90,0.35); }
+    .rev-top { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
+    .rev-av { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: white; flex-shrink: 0; }
+    .av1 { background: #c06080; } .av2 { background: #5a9060; } .av3 { background: #4a6090; }
+    .rev-name { font-size: 0.75rem; font-weight: 700; color: var(--white); letter-spacing: 0.05em; text-transform: uppercase; }
+    .rev-s { color: var(--gold); font-size: 0.7rem; }
+    .g-logo { width: 18px; height: 18px; margin-left: auto; flex-shrink: 0; }
+    .rev-txt { font-size: 0.83rem; line-height: 1.8; color: rgba(255,255,255,0.6); }
+
+    /* INFO BAR */
+    .info-bar { background: var(--offwhite); display: grid; grid-template-columns: repeat(3, 1fr); }
+    .info-item { padding: 2.8rem 3rem; display: flex; align-items: center; gap: 1.2rem; border-right: 1px solid var(--light-gray); }
+    .info-item:last-child { border-right: none; }
+    .info-ico { width: 44px; height: 44px; flex-shrink: 0; background: var(--gold-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .info-lbl { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+    .info-val { font-size: 0.85rem; font-weight: 500; color: var(--black); }
+    .info-val a { color: var(--black); text-decoration: none; transition: color 0.2s; }
+    .info-val a:hover { color: var(--gold); }
+
+    /* FOOTER */
+    footer { background: var(--black); padding: 4rem 4rem 2.5rem; text-align: center; }
+    .ft-logo { display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin-bottom: 2rem; }
+    .ft-logo-icon { width: 42px; height: 42px; background: var(--darkgray); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .ft-logo-icon svg { width: 22px; height: 22px; fill: var(--gold); }
+    .ft-logo-text { font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--white); letter-spacing: 0.04em; }
+    .ft-socials { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2.5rem; }
+    .ft-soc { width: 40px; height: 40px; border-radius: 50%; background: var(--darkgray); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.25s, border-color 0.25s; }
+    .ft-soc:hover { background: var(--gold); border-color: var(--gold); }
+    .ft-soc svg { width: 16px; height: 16px; }
+    .ft-nav { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .ft-nav a { font-size: 0.69rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.2s; }
+    .ft-nav a:hover { color: var(--gold); }
+    .ft-copy { font-size: 0.7rem; color: rgba(255,255,255,0.22); letter-spacing: 0.05em; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+    .reveal { opacity:0; transform:translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      #hero { flex-direction: column; }
+      .hero-img { flex: none; min-height: 55vw; }
+      .hero-text { flex: none; padding: 3.5rem 2rem; }
+      #change, #welcome { grid-template-columns: 1fr; }
+      .change-img, .welcome-img { min-height: 280px; }
+      .change-text, .welcome-text { padding: 3.5rem 2rem; }
+      #services { padding: 4rem 1.5rem; }
+      .svc-grid { grid-template-columns: repeat(3, 1fr); }
+      #ready { padding: 5rem 2rem; }
+      #reviews { padding: 4rem 1.5rem; }
+      .rev-grid { grid-template-columns: 1fr; }
+      .info-bar { grid-template-columns: 1fr; }
+      .info-item { border-right: none; border-bottom: 1px solid var(--light-gray); }
+      footer { padding: 3rem 1.5rem 2rem; }
+    }
+    @media (max-width: 560px) {
+      .svc-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+    </div>
+    <span class="nav-logo-text">Salon Bella</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#welcome">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#ready">Contact</a></li>
+  </ul>
+  <a href="https://calendly.com" target="_blank" class="nav-book">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-img">
+    <div class="hero-img-inner">
+      <svg width="140" height="240" viewBox="0 0 140 240" fill="none">
+        <ellipse cx="70" cy="45" rx="26" ry="30" fill="white"/>
+        <path d="M18 240 C18 170 36 132 70 122 C104 132 122 170 122 240Z" fill="white"/>
+        <path d="M46 42 C28 22 32 2 55 14" stroke="white" stroke-width="3.5" fill="none" opacity="0.8"/>
+        <path d="M94 40 C112 20 110 0 87 12" stroke="white" stroke-width="3.5" fill="none" opacity="0.8"/>
+        <path d="M40 240 C8 170 0 130 10 200" stroke="white" stroke-width="2" fill="none" opacity="0.4"/>
+      </svg>
+      <span>Your Photo Here</span>
+    </div>
+  </div>
+  <div class="hero-text">
+    <p class="hero-tag">Passion <span>•</span> Elegance <span>•</span> Bridal</p>
+    <h1 class="hero-h1">Have a<br>Perfect<br><em style="font-style:normal;color:var(--gold)">Look</em></h1>
+    <p class="hero-p">Ganemulla's most loved bridal beauty destination. Hair, nails, make-up, cosmetics &amp; a fancy store — all in one place.</p>
+    <div class="hero-btns">
+      <a href="https://calendly.com" target="_blank" class="btn-gold">Book Now</a>
+      <a href="tel:0778246974" class="hero-call"><small>Call Us</small>077 824 6974</a>
+    </div>
+    <div class="hero-stars">
+      <span class="stars-g">★★★★★</span>
+      <p><strong>4.9</strong> · 25 Google Reviews<br>Ganemulla, Sri Lanka</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="marquee-item">Bridal Dressing</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Hair Styling</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Nail Salon</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Make-up Art</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Cosmetics</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Fancy Items</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Bridal Dressing</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Hair Styling</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Nail Salon</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Make-up Art</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Cosmetics</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Fancy Items</span><span class="marquee-sep"> ✦ </span>
+  </div>
+</div>
+
+<!-- TIME FOR A CHANGE -->
+<section id="change">
+  <div class="change-img">
+    <svg width="180" height="220" viewBox="0 0 180 220" fill="none" opacity="0.15" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
+      <ellipse cx="90" cy="50" rx="32" ry="36" fill="#1a1a18"/>
+      <path d="M30 220 C30 148 50 112 90 100 C130 112 150 148 150 220Z" fill="#1a1a18"/>
+      <path d="M62 58 C40 35 44 8 70 22" stroke="#1a1a18" stroke-width="5" fill="none"/>
+      <path d="M118 55 C140 32 137 5 112 19" stroke="#1a1a18" stroke-width="5" fill="none"/>
+      <path d="M50 70 C22 52 14 18 45 16" stroke="#1a1a18" stroke-width="3.5" fill="none"/>
+      <path d="M130 68 C158 50 166 16 135 14" stroke="#1a1a18" stroke-width="3.5" fill="none"/>
+    </svg>
+    <span>Your Photo Here</span>
+  </div>
+  <div class="change-text reveal">
+    <span class="gold-bar"></span>
+    <h2>Time for a<br><em>Change?</em></h2>
+    <p>At Salon Bella, we love connecting with every client who visits us. With a warm, welcoming atmosphere and exceptional attention to detail, we create looks that you'll come back for again and again. Let us discover the style that best showcases your natural beauty.</p>
+    <a href="https://calendly.com" target="_blank" class="btn-gold" style="align-self:flex-start">Book Now</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-header reveal">
+    <p class="eyebrow">Our Service</p>
+    <h2 style="font-family:'Great Vibes',cursive;font-size:clamp(2.5rem,4vw,4rem);font-weight:400;color:var(--white);font-style:normal;letter-spacing:0.04em">What We Do</h2>
+  </div>
+  <div class="svc-grid reveal">
+    <div class="svc-card">
+      <div class="svc-bg"></div><div class="svc-overlay"></div>
+      <div class="svc-lbl"><span></span><p>Bridal Dressing</p></div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-bg"></div><div class="svc-overlay"></div>
+      <div class="svc-lbl"><span></span><p>Hair Styling &amp; Colour</p></div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-bg"></div><div class="svc-overlay"></div>
+      <div class="svc-lbl"><span></span><p>Make-up Art</p></div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-bg"></div><div class="svc-overlay"></div>
+      <div class="svc-lbl"><span></span><p>Nail Salon</p></div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-bg"></div><div class="svc-overlay"></div>
+      <div class="svc-lbl"><span></span><p>Skincare &amp; Facials</p></div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-bg"></div><div class="svc-overlay"></div>
+      <div class="svc-lbl"><span></span><p>Fancy Store</p></div>
+    </div>
+  </div>
+  <div class="svc-footer reveal">
+    <a href="https://calendly.com" target="_blank" class="btn-outline-gold">Book a Service</a>
+  </div>
+</section>
+
+<!-- WARM WELCOME -->
+<section id="welcome">
+  <div class="welcome-img">
+    <svg width="200" height="220" viewBox="0 0 200 220" fill="none" opacity="0.14" style="position:absolute">
+      <circle cx="38" cy="38" r="24" stroke="#1a1a18" stroke-width="8" fill="none"/>
+      <circle cx="162" cy="38" r="24" stroke="#1a1a18" stroke-width="8" fill="none"/>
+      <circle cx="38" cy="38" r="9" fill="#1a1a18"/>
+      <circle cx="162" cy="38" r="9" fill="#1a1a18"/>
+      <line x1="56" y1="50" x2="148" y2="185" stroke="#1a1a18" stroke-width="8" stroke-linecap="round"/>
+      <line x1="144" y1="50" x2="52" y2="185" stroke="#1a1a18" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+    <span>Your Photo Here</span>
+  </div>
+  <div class="welcome-text reveal">
+    <h2>A Warm<br><em>Welcome</em></h2>
+    <svg class="squiggle" viewBox="0 0 80 14" fill="none">
+      <path d="M0 7 C10 1, 20 13, 30 7 C40 1, 50 13, 60 7 C70 1, 76 11, 80 7" stroke="#b8965a" stroke-width="2.5" fill="none"/>
+    </svg>
+    <p>Come and experience the personal touch at <a href="#">Salon Bella</a>. A bright, comfortable space with a relaxing and uplifting environment where you are truly cared for. We believe everyone deserves to look and feel their best. Our experienced and talented stylists will work with you to create a look that works for your personality and lifestyle.</p>
+  </div>
+</section>
+
+<!-- READY CTA -->
+<section id="ready" class="reveal">
+  <h2>Are You Ready for<br><em>Your Bella Moment?</em></h2>
+  <p>Allow us to curate a look that expresses your personality, helping you feel like your most authentic self. Our beauty services are driven by a passion for people — we love seeing our clients light up when they see their new look. There's truly nothing like it.</p>
+  <a href="https://calendly.com" target="_blank" class="btn-gold">Book Now</a>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="rev-header reveal">
+    <h2>What Some of Our<br><em>Clients Say</em></h2>
+  </div>
+  <div style="text-align:center;margin-bottom:3rem" class="reveal">
+    <div class="g-badge" style="display:inline-flex">
+      <div class="g-icon">G</div>
+      <div class="g-info" style="margin-left:0.5rem">
+        <p>Google Reviews</p>
+        <div class="g-stars">★★★★★</div>
+        <strong>4.9 · 25 Reviews</strong>
+      </div>
+    </div>
+  </div>
+  <div class="rev-grid">
+    <div class="rev-card reveal d1">
+      <div class="rev-top">
+        <div class="rev-av av1">P</div>
+        <div><p class="rev-name">Priya S.</p><div class="rev-s">★★★★★</div></div>
+        <svg class="g-logo" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <p class="rev-txt">" Absolutely stunning bridal work. They made my wedding day truly unforgettable. Every detail was perfect — from the hair to the make-up. Salon Bella is simply the best in Ganemulla!</p>
+    </div>
+    <div class="rev-card reveal d2">
+      <div class="rev-top">
+        <div class="rev-av av2">N</div>
+        <div><p class="rev-name">Nadeesha R.</p><div class="rev-s">★★★★★</div></div>
+        <svg class="g-logo" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <p class="rev-txt">" Best salon in Ganemulla! The team is so talented and warm. I always leave feeling like a completely new person. Their nail art is especially amazing — I keep coming back!</p>
+    </div>
+    <div class="rev-card reveal d3">
+      <div class="rev-top">
+        <div class="rev-av av3">M</div>
+        <div><p class="rev-name">Malini K.</p><div class="rev-s">★★★★★</div></div>
+        <svg class="g-logo" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <p class="rev-txt">" I've been coming to Salon Bella for years and they never disappoint. The fancy store is a wonderful bonus — I always find the perfect accessory. A truly special place!</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="info-item reveal">
+    <div class="info-ico">📍</div>
+    <div><p class="info-lbl">Find Us</p><p class="info-val">233/B/5, Ganemulla 11020, Sri Lanka</p></div>
+  </div>
+  <div class="info-item reveal d1">
+    <div class="info-ico">⏰</div>
+    <div><p class="info-lbl">Opening Hours</p><p class="info-val">Open Daily · Closes 8:30 PM</p></div>
+  </div>
+  <div class="info-item reveal d2">
+    <div class="info-ico">📞</div>
+    <div><p class="info-lbl">Call Us</p><p class="info-val"><a href="tel:0778246974">077 824 6974</a></p></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-logo">
+    <div class="ft-logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+    </div>
+    <span class="ft-logo-text">Salon Bella</span>
+  </div>
+  <div class="ft-socials">
+    <a href="https://www.facebook.com/SalonBellaBridalsGanemulla" target="_blank" class="ft-soc" title="Facebook">
+      <svg viewBox="0 0 24 24" fill="white" stroke="none" width="16" height="16"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/salonbellabridals" target="_blank" class="ft-soc" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+    </a>
+    <a href="https://www.tiktok.com" target="_blank" class="ft-soc" title="TikTok">
+      <svg viewBox="0 0 24 24" fill="white" stroke="none" width="16" height="16"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.82 1.55V6.85a4.85 4.85 0 0 1-1.05-.16z"/></svg>
+    </a>
+  </div>
+  <nav class="ft-nav">
+    <a href="#services">Services</a>
+    <a href="#welcome">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="https://calendly.com" target="_blank">Book Now</a>
+    <a href="tel:0778246974">077 824 6974</a>
+  </nav>
+  <p class="ft-copy">© 2025 Salon Bella Bridals Ganemulla · 233/B/5, Ganemulla 11020, Sri Lanka · All Rights Reserved.</p>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
